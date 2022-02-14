@@ -15,11 +15,16 @@ public class InfantryUnitTest {
         InfantryUnit negativeArmor = new InfantryUnit("Test",5,5,-10);
         InfantryUnit positiveUnit = new InfantryUnit("Test",5,5,5);
         InfantryUnit negativeString = new InfantryUnit("",5,5,5);
+        InfantryUnit secondConstructor = new InfantryUnit("Test",100);
+        InfantryUnit secondConstructor2 = new InfantryUnit("",-10);
     }
 
     @Test
     public void testAttack(){
+        attackingUnit.attack(testInfatry);
+        System.out.println(testInfatry.getHealth());
         testInfatry.attack(attackingUnit);
+        System.out.println(attackingUnit.getHealth());
     }
 
     @Test

@@ -159,9 +159,9 @@ public abstract class Unit {
      */
     public void attack(Unit enemyUnit){
         int newHealth = enemyUnit.getHealth() - (this.attack + this.getAttackBonus()) + (enemyUnit.getArmor() + enemyUnit.getResistanceBonus());
-        if (newHealth<0&&newHealth<=this.getHealth()){
+        if (newHealth<0){
             enemyUnit.setHealth(0);
-        }else {
+        }else if(newHealth<this.getHealth()){
             enemyUnit.setHealth(newHealth);
         }
     }
