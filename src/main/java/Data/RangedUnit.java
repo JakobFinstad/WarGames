@@ -43,6 +43,14 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getResistanceBonus() {
-        return 0;
+        int resistanceBonus = 2;
+        if (timeDefended == 0){
+            resistanceBonus = 6;
+        }
+        if(timeDefended == 1){
+            resistanceBonus = 4;
+        }
+        timeDefended ++;
+        return resistanceBonus;
     }
 }

@@ -14,6 +14,8 @@ public abstract class Unit {
     protected int health;
     protected int attack;
     protected int armor;
+    protected int timeDefended = 0;
+    protected int timeAttacked = 0;
 
     /**
      * Constructor for objects witch inherits from this class
@@ -47,6 +49,22 @@ public abstract class Unit {
      */
     public int getHealth(){
         return this.health;
+    }
+
+    /**
+     * Get time defended
+     * @return how many attacks this unit has defended against
+     */
+    public int getTimeDefended() {
+        return timeDefended;
+    }
+
+    /**
+     * Get time attacked
+     * @return how many times this unit has attacked
+     */
+    public int getTimeAttacked() {
+        return timeAttacked;
     }
 
     /**
@@ -102,7 +120,11 @@ public abstract class Unit {
      * @param attack the attack of the unit
      */
     protected void setAttack(int attack){
-        this.attack = attack;
+        if(attack>0) {
+            this.attack = attack;
+        }else{
+            this.attack = 0;
+        }
     }
 
     /**
@@ -110,7 +132,11 @@ public abstract class Unit {
      * @param armor value resembling damage resistance
      */
     protected void setArmor(int armor){
-        this.armor = armor;
+        if(armor >0) {
+            this.armor = armor;
+        }else{
+            this.armor = 0;
+        }
     }
 
     /**
@@ -133,7 +159,7 @@ public abstract class Unit {
      */
     public void attack(Unit enemyUnit){
         int newHealth = enemyUnit.getHealth() - (this.attack + this.getAttackBonus()) + (enemyUnit.getArmor() + enemyUnit.getResistanceBonus());
-        if (newHealth<0){
+        if (newHealth<0&&newHealth<=this.getHealth()){
             enemyUnit.setHealth(0);
         }else {
             enemyUnit.setHealth(newHealth);
