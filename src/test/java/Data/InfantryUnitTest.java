@@ -17,7 +17,13 @@ public class InfantryUnitTest {
         InfantryUnit negativeString = new InfantryUnit("",5,5,5);
         InfantryUnit secondConstructor = new InfantryUnit("Test",100);
         InfantryUnit secondConstructor2 = new InfantryUnit("",-10);
+        assertEquals(0,negativeArmor.getArmor());
+        assertEquals(0,negativeAttack.getAttack());
+        assertEquals(0,negativeHealth.getHealth());
+        assertEquals(0,secondConstructor2.getHealth());
+        assertEquals("Invalid name",negativeString.getName());
     }
+
 
     @Test
     public void testAttack(){

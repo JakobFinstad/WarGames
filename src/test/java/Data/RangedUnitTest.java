@@ -12,9 +12,13 @@ public class RangedUnitTest {
     public void testDefaultConstructor(){
         RangedUnit negativeString = new RangedUnit("",10,10,10);
         RangedUnit positiveTest = new RangedUnit("Test", 10,10,10);
-        RangedUnit negativeHelth = new RangedUnit("Test",-10,10,10);
+        RangedUnit negativeHealth = new RangedUnit("Test",-10,10,10);
         RangedUnit negativeAttack = new RangedUnit("Test",10,-10,10);
         RangedUnit negativeArmor = new RangedUnit("Test",1,1,-1);
+        assertEquals(0,negativeArmor.getArmor());
+        assertEquals(0,negativeAttack.getAttack());
+        assertEquals(0,negativeHealth.getHealth());
+        assertEquals("Invalid name",negativeString.getName());
     }
 
     @Test
@@ -22,6 +26,8 @@ public class RangedUnitTest {
         RangedUnit negativeString2 = new RangedUnit("",1);
         RangedUnit positiveTest2 = new RangedUnit("Test",1);
         RangedUnit negativeHealth2 = new RangedUnit("Test",-1);
+        assertEquals(0,negativeHealth2.getHealth());
+        assertEquals("Invalid name", negativeString2.getName());
     }
 
    @Test
