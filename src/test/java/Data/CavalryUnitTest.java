@@ -8,6 +8,11 @@ public class CavalryUnitTest {
     CavalryUnit cavalryUnitDefender = new CavalryUnit("Test2",20,20,20);
     CavalryUnit dummyTarget = new CavalryUnit("Test3",0,0,0);
 
+    /**
+     *  test will <code>PASS</code> if the instance gets created.
+     *
+     *  test will <code>FAIL</code> if the instance DO NOT get created with correct fields
+     */
     @Test
     public void testDefaultContstructor(){
         CavalryUnit negativeString = new CavalryUnit("",10,10,10);
@@ -30,6 +35,9 @@ public class CavalryUnitTest {
         assertEquals("Invalid name", negativeString2.getName());
     }
 
+    /**
+     * Test attack for cavalry units
+     */
     @Test
     public void testAttack() {
         cavalryUnitAttacker.attack(cavalryUnitDefender);

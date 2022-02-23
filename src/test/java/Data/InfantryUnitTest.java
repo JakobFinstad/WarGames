@@ -28,9 +28,9 @@ public class InfantryUnitTest {
     @Test
     public void testAttack(){
         attackingUnit.attack(testInfatry);
-        System.out.println(testInfatry.getHealth());
+        assertEquals(0,testInfatry.getHealth());
         testInfatry.attack(attackingUnit);
-        System.out.println(attackingUnit.getHealth());
+        assertEquals(10,attackingUnit.getHealth());
     }
 
     @Test
