@@ -1,4 +1,6 @@
-package Data;
+package Function;
+
+import Data.Unit;
 
 public class Battle {
     private Army armyOne;
