@@ -11,6 +11,12 @@ public class Battle {
         this.armyTwo = armyTwo;
     }
 
+    /**
+     * Simulate a battle between 4 units and deletes the units that get reduced health to 0. This will
+     * continue until one of the army are empty. Bruker to attackers og to defenders og håndterer at
+     * uniten dør før den rekker å attacke.
+     * @return winner of the battle, the army who has any units left after the battle
+     */
     public Army simulate(){
         Army winner = null;
 
@@ -25,9 +31,11 @@ public class Battle {
                 armyTwo.remove(armyTwoDefender);
             }
 
-            armyTwoAttacker.attack(armyOneDefender);
-            if(armyOneDefender.getHealth()==0){
-                armyOne.remove(armyOneDefender);
+            if(armyTwo.getAllUnits().contains(armyTwoAttacker)) {
+                armyTwoAttacker.attack(armyOneDefender);
+                if (armyOneDefender.getHealth() == 0) {
+                    armyOne.remove(armyOneDefender);
+                }
             }
 
         }
