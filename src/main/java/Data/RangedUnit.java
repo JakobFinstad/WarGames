@@ -50,7 +50,6 @@ public class RangedUnit extends Unit {
         if(timeDefended == 1){
             resistanceBonus = 4;
         }
-        timeDefended ++;
         return resistanceBonus;
     }
 }

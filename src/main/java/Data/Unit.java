@@ -3,7 +3,7 @@ package Data;
 import java.util.Locale;
 
 /**
- * Abstract class for creating instance of units, with set and get methods
+ * Abstract class for creating instance of units, with set and get methods.
  *
  * @author Jakob Finstad
  * @version 10.02.2022
@@ -18,7 +18,8 @@ public abstract class Unit {
     protected int timeAttacked = 0;
 
     /**
-     * Constructor for objects witch inherits from this class
+     * Constructor for objects witch inherits from this class.
+     *
      * @param name name of the unit
      * @param health the amount of start health to this unit
      * @param attack the amount of attack damage
@@ -32,19 +33,22 @@ public abstract class Unit {
     }
 
     /**
-     * Get attack bonus
+     * Get attack bonus.
+     *
      * @return attack bonus
      */
     public abstract int getAttackBonus();
 
     /**
-     * Get resistance bonus
+     * Get resistance bonus.
+     *
      * @return resistance bonus
      */
     public abstract int getResistanceBonus();
 
     /**
-     * Get the amount of hitpoints for this unit
+     * Get the amount of hitpoints for this unit.
+     *
      * @return health of then unit
      */
     public int getHealth(){
@@ -52,7 +56,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get time defended
+     * Get time defended.
+     *
      * @return how many attacks this unit has defended against
      */
     public int getTimeDefended() {
@@ -60,7 +65,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get time attacked
+     * Get time attacked.
+     *
      * @return how many times this unit has attacked
      */
     public int getTimeAttacked() {
@@ -68,7 +74,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get the type of the unit
+     * Get the type of the unit.
+     *
      * @return name of the unit
      */
     public String getName(){
@@ -76,7 +83,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get attack of this unit
+     * Get attack of this unit.
+     *
      * @return attack of the unit
      */
     public int getAttack(){
@@ -84,7 +92,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get amount of armor to the unit
+     * Get amount of armor to the unit.
+     *
      * @return armor if the units
      */
     public int getArmor(){
@@ -92,7 +101,8 @@ public abstract class Unit {
     }
 
     /**
-     * Set the amount of health to the unit
+     * Set the amount of health to the unit.
+     *
      * @param health the amount of health, if below 0 the health is set to 0
      */
     public void setHealth(int health){
@@ -104,7 +114,8 @@ public abstract class Unit {
     }
 
     /**
-     * Set the name of the unit
+     * Set the name of the unit.
+     *
      * @param name name of the unit, cannot be "" and not null
      */
     protected void setName(String name){
@@ -116,7 +127,8 @@ public abstract class Unit {
     }
 
     /**
-     * Set attack of the unit
+     * Set attack of the unit.
+     *
      * @param attack the attack of the unit
      */
     protected void setAttack(int attack){
@@ -128,7 +140,8 @@ public abstract class Unit {
     }
 
     /**
-     * Set the amount of armor to the unit
+     * Set the amount of armor to the unit.
+     *
      * @param armor value resembling damage resistance
      */
     protected void setArmor(int armor){
@@ -140,7 +153,8 @@ public abstract class Unit {
     }
 
     /**
-     * Get a standard format to view the class
+     * Get a standard format to view the class.
+     *
      * @return format for viewing the class
      */
     @Override
@@ -154,7 +168,8 @@ public abstract class Unit {
     }
 
     /**
-     * Attack a given enemy unit, if the attack reduces the enemy's health below 0, the new health to the enemy will be set to 0
+     * Attack a given enemy unit, if the attack reduces the enemy's health below 0, the new health to the enemy will be set to 0.
+     *
      * @param enemyUnit the enemy unit this unit attacks
      */
     public void attack(Unit enemyUnit){
@@ -164,5 +179,17 @@ public abstract class Unit {
         }else if(newHealth<this.getHealth()){
             enemyUnit.setHealth(newHealth);
         }
+        this.incrementTimeAttacked();
+        enemyUnit.incrementTimeDefended();
+    }
+
+
+    public void incrementTimeAttacked(){
+        this.timeAttacked ++;
+    }
+
+
+    public void incrementTimeDefended(){
+        this.timeDefended ++;
     }
 }

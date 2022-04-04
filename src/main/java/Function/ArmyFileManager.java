@@ -3,9 +3,9 @@ package Function;
 import java.io.File;
 import java.io.IOException;
 
-public class CsvLogger {
+public class ArmyFileManager {
 
-    public CsvLogger(Army army){
+    public ArmyFileManager(Army army){
         try {
             File armyFile = new File(army.getName() + ".txt");
             if(armyFile.createNewFile()){
@@ -18,4 +18,10 @@ public class CsvLogger {
             System.out.println(e.getMessage());
         }
     }
+
+
+
+
+
+
 }
