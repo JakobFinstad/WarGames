@@ -5,4 +5,11 @@ Fordelen med dette er at det blir ganske fair fight, og de som har flest av de s
 armene har en unit igjen, så vil arme 1 ha større sjangs for å vinne da de angriper alltid først. Det er ikke ett problem at armene ikke kan
 forsvare eller angripe selv om de bare har 1 unit.
 
-Dette er en test
+
+ArmyFileManager{
+    Konstruktør: Oppretter en fil med samme navn som armyen som sendes inn i konstruktøren.
+                    Skjekker om det allerede finnes en fil som har navnet til army klassen, hvis den finnes,
+                    lages det ikke ny fil.
+
+
+}
