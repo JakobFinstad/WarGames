@@ -13,3 +13,18 @@ ArmyFileManager{
 
 
 }
+
+Unit{
+    attack: Jeg har lagt til incrementTimeAttacked og incrementTimeDefended for da kan jeg velge
+            hvor mange ganger en unit har blitt angrepet og angriper. De er satt til private for
+            det er kun attack som trenger disse metodene, har ikke tenkt at noen fler kan bruke disse metodene.
+}
+
+Army{
+    get(Infantry,Cavalry,Commander,Ranged)Units: Har lagd ett objekt av typen units jeg vil returnere
+            slik at jeg kan teste klassen. Jeg tester klassen av objektene i streamen mot dette "dummy"
+            objektet jeg har lagd. Er usikker på om dette er den beste metoden da jeg må opprette
+            ett objekt av alle klassene for å få filtrert ut unitsene. Tror det funker, det gjenstår å skjekke
+            om alle er av den riktige klassen. Streamen er grei, og har skrevet en kort forklaring på metodene.
+
+}

@@ -183,13 +183,18 @@ public abstract class Unit {
         enemyUnit.incrementTimeDefended();
     }
 
-
-    public void incrementTimeAttacked(){
+    /**
+     * Increment the time attacked of this unit.
+     */
+    private void incrementTimeAttacked(){
         this.timeAttacked ++;
     }
 
 
-    public void incrementTimeDefended(){
+    /**
+     * Increment time defended of this unit.
+     */
+    private void incrementTimeDefended(){
         this.timeDefended ++;
     }
 }

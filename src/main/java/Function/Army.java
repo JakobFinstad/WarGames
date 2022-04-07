@@ -1,11 +1,12 @@
 package Function;
 
-import Data.Unit;
+import Data.*;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Army {
     private String name;
@@ -128,4 +129,65 @@ public class Army {
     public int hashCode() {
         return Objects.hash(name, units);
     }
+
+    /**
+     * Get infantry units in this army.
+     *
+     * @return list with infantry units in this army
+     */
+    public List<Unit> getInfatryUnits(){
+        InfantryUnit unit = new InfantryUnit("10",10);
+        List<Unit> units = this.units.stream().
+                filter(u->u.getClass()==unit.getClass()).
+                collect(Collectors.toList());
+
+        return units;
+    };
+
+    /**
+     * Get the cavalry units in this army.
+     *
+     * @return list of cavalry units in this army
+     */
+    public List<Unit> getCavalryUnits(){
+        CavalryUnit unit = new CavalryUnit("10",10);
+        List<Unit> units = this.units.stream().
+                filter(u->u.getClass()==unit.getClass()).
+                collect(Collectors.toList());
+
+        return units;
+    };
+
+    /**
+     * Get the ranged units in this army.
+     *
+     * @return list with the ranged units in the army
+     */
+    public List<Unit> getRangedUnits(){
+        RangedUnit unit = new RangedUnit("10",10);
+        List<Unit> units = this.units.stream().
+                filter(u->u.getClass()==unit.getClass()).
+                collect(Collectors.toList());
+
+        return units;
+    };
+
+    /**
+     * Get the commander units in this army.
+     *
+     * @return list of commander units in the army
+     */
+    public List<Unit> getCommanderUnits(){
+        CommanderUnit unit = new CommanderUnit("10",10);
+        List<Unit> units = this.units.stream().
+                filter(u->u.getClass()==unit.getClass()).
+                collect(Collectors.toList());
+
+        return units;
+    };
+
+    /**
+     * TODO: Add testing class for army
+     */
+
 }
