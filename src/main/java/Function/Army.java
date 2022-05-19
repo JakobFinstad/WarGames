@@ -22,7 +22,7 @@ public class Army {
     }
 
     /**
-     * Constructor for a army
+     * Constructor for an army
      * @param name the name of the army
      * @param units a list with units to put inside this army
      */
@@ -186,8 +186,5 @@ public class Army {
         return units;
     };
 
-    /**
-     * TODO: Add testing class for army
-     */
 
 }

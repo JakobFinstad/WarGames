@@ -119,7 +119,7 @@ public abstract class Unit {
      * @param name name of the unit, cannot be "" and not null
      */
     protected void setName(String name){
-        if (!name.isEmpty()&&name!=null){
+        if (name!=null&&!name.isEmpty()){
             this.name = name.strip().toLowerCase(Locale.ROOT);
         }else{
             this.name = "Invalid name";

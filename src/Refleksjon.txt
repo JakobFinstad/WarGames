@@ -28,3 +28,9 @@ Army{
             om alle er av den riktige klassen. Streamen er grei, og har skrevet en kort forklaring på metodene.
 
 }
+
+UnitTest{
+    Tester alle funksjonenen til unit, men jeg har valgt å ikke teste setter funksjonene, da disse
+    blir brukt i konstruktøren til unit. Dette gjør at de blir automatisk skjekket når jeg bruker de i
+    asserEquals() og når jeg tester konstruktøren.
+}
