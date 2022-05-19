@@ -1,15 +1,16 @@
 package Data;
 
 /**
- * Class for infantry units, with a few fields and some methods for further handling of the war game
+ * Class for infantry units, with a few fields and some methods for further handling of the war game.
  *
- * @author Jakob Finstad
+ * @author 10007
  * @version 10.02.2022
  */
 public class InfantryUnit extends Unit{
 
     /**
-     * Default constructor for this class
+     * Default constructor for this class.
+     *
      * @param name name of then unit
      * @param health the amount of health, must be above 0
      * @param attack the amount of attack
@@ -20,7 +21,8 @@ public class InfantryUnit extends Unit{
     }
 
     /**
-     * Simple constructor with predetermined attack and armor
+     * Simple constructor with predetermined attack and armor.
+     *
      * @param name name of the unit
      * @param health the amount of hitpoints of this unit, must be above 0
      */
@@ -29,7 +31,8 @@ public class InfantryUnit extends Unit{
     }
 
     /**
-     * Get attack bonus of this unit, predetermined value
+     * Get attack bonus of this unit, predetermined value.
+     *
      * @return the attack bonus of this unit
      */
     @Override
@@ -38,7 +41,8 @@ public class InfantryUnit extends Unit{
     }
 
     /**
-     * Get the resistance bonus of the unit
+     * Get the resistance bonus of the unit.
+     *
      * @return the resistance of this unit
      */
     @Override

@@ -1,52 +1,34 @@
 package Data;
 
+import Function.Army;
+import Function.UnitFactory;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * A class that test the cavalry unit class.
+ *
+ * @author 10007
+ * @version 19.05.2022
+ */
 public class CavalryUnitTest {
-    CavalryUnit cavalryUnitAttacker = new CavalryUnit("Test1",10,10,10);
-    CavalryUnit cavalryUnitDefender = new CavalryUnit("Test2",20,20,20);
-    CavalryUnit dummyTarget = new CavalryUnit("Test3",0,0,0);
 
     /**
-     *  test will <code>PASS</code> if the instance gets created.
+     * test will <code>PASS</code> if the attack bonus changes after an attack as it should.
      *
-     *  test will <code>FAIL</code> if the instance DO NOT get created with correct fields
+     * test will <code>FAIL</code> if the attack bonus doesn't change after one attack
      */
     @Test
-    public void testDefaultContstructor(){
-        CavalryUnit negativeString = new CavalryUnit("",10,10,10);
-        CavalryUnit positiveTest = new CavalryUnit("Test", 10,10,10);
-        CavalryUnit negativeHealth = new CavalryUnit("Test",-10,10,10);
-        CavalryUnit negativeAttack = new CavalryUnit("Test",10,-10,10);
-        CavalryUnit negativeArmor = new CavalryUnit("Test",1,1,-1);
-        assertEquals(0,negativeArmor.getArmor());
-        assertEquals(0,negativeAttack.getAttack());
-        assertEquals(0,negativeHealth.getHealth());
-        assertEquals("Invalid name",negativeString.getName());
-    }
-
-    @Test
-    public void testBasicConstructor(){
-        CavalryUnit negativeString2 = new CavalryUnit("",1);
-        CavalryUnit positiveTest2 = new CavalryUnit("Test",1);
-        CavalryUnit negativeHealth2 = new CavalryUnit("Test",-1);
-        assertEquals(0,negativeHealth2.getHealth());
-        assertEquals("Invalid name", negativeString2.getName());
-    }
-
-    /**
-     * Test attack for cavalry units
-     */
-    @Test
-    public void testAttack() {
-        cavalryUnitAttacker.attack(cavalryUnitDefender);
-        assertEquals(20, cavalryUnitDefender.getHealth());
-        dummyTarget.attack(cavalryUnitAttacker);
-        dummyTarget.attack(cavalryUnitAttacker);
-        assertEquals(10, cavalryUnitAttacker.getHealth());
-        cavalryUnitDefender.attack(cavalryUnitAttacker);
-        assertEquals(0, cavalryUnitAttacker.getHealth());
+    public void testAttackAndResistBonus(){
+        UnitFactory factory = new UnitFactory();
+        Army army = new Army("testArmy");
+        army.addAll(factory.createMultipleUnits("CavalryUnit","unit",10,4));
+        assertEquals(1,army.getAllUnits().get(0).getResistanceBonus());
+        assertEquals(6,army.getAllUnits().get(0).getAttackBonus());
+        //Testing if the values changes after attack
+        army.getAllUnits().get(0).attack(army.getAllUnits().get(1));
+        assertEquals(2,army.getAllUnits().get(0).getAttackBonus());
+        assertEquals(1,army.getAllUnits().get(0).getResistanceBonus());
     }
 
 }

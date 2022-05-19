@@ -8,12 +8,19 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+/**
+ * A class that handles multiple units. With som basic methods to handle the units in this army.
+ *
+ * @author 10007
+ * @version 24.04.2022
+ */
 public class Army {
     private String name;
     private List<Unit> units;
 
     /**
-     * Basic constructor which create new army
+     * Basic constructor which create new army.
+     *
      * @param name name of the army
      */
     public Army(String name){
@@ -22,7 +29,8 @@ public class Army {
     }
 
     /**
-     * Constructor for a army
+     * Constructor for an army.
+     *
      * @param name the name of the army
      * @param units a list with units to put inside this army
      */
@@ -32,7 +40,8 @@ public class Army {
     }
 
     /**
-     * Get name of this army
+     * Get name of this army.
+     *
      * @return name of the army
      */
     public String getName(){
@@ -40,7 +49,8 @@ public class Army {
     }
 
     /**
-     * Add a unit to this army
+     * Add a unit to this army.
+     *
      * @param unit the unit you want to add
      */
     public void add(Unit unit){
@@ -48,7 +58,8 @@ public class Army {
     }
 
     /**
-     * Add all units in a list to an army
+     * Add all units in a list to an army.
+     *
      * @param units list of units you want to add
      */
     public void addAll(List<Unit> units){
@@ -60,7 +71,8 @@ public class Army {
     }
 
     /**
-     * Remove a unit from the army
+     * Remove a unit from the army.
+     *
      * @param unit the unit you want to remove
      */
     public void remove(Unit unit){
@@ -72,7 +84,8 @@ public class Army {
     }
 
     /**
-     * Check if this army contains any units
+     * Check if this army contains any units.
+     *
      * @return true if this army contains units
      */
     public boolean hasUnit(){
@@ -84,7 +97,8 @@ public class Army {
     }
 
     /**
-     * Get all units in a list
+     * Get all units in a list.
+     *
      * @return list with all units
      */
     public List<Unit> getAllUnits(){
@@ -92,7 +106,8 @@ public class Army {
     }
 
     /**
-     * Get a random unit from army
+     * Get a random unit from army.
+     *
      * @return random unit from army
      */
     public Unit getRandomUnit(){
@@ -110,7 +125,8 @@ public class Army {
     }
 
     /**
-     * Check if army contains a specific unit
+     * Check if army contains a specific unit.
+     *
      * @param object the object you want to search for
      * @return true if it contains object
      */
@@ -186,8 +202,5 @@ public class Army {
         return units;
     };
 
-    /**
-     * TODO: Add testing class for army
-     */
 
 }
