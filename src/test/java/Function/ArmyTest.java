@@ -4,22 +4,38 @@ import Data.CavalryUnit;
 import Data.InfantryUnit;
 import Data.RangedUnit;
 import Data.Unit;
-import Function.Army;
-import org.junit.Test;
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.assertEquals;
-
+/**
+ * A class that tests the army and the armies function.
+ *
+ * @author 10007
+ * @version 19.05.2022
+ */
 public class ArmyTest {
-    Army testArmy = new Army("TestArmy");
-    Unit unit1 = new RangedUnit("Test1",10);
-    Unit unit2 = new RangedUnit("Test2",10);
-    Unit unit3 = new CavalryUnit("Test3",10);
-    Unit unit4 = new CavalryUnit("Test4",10);
-    Unit unit5 = new InfantryUnit("Test5",10);
-    Unit unit6 = new InfantryUnit("Test6",10);
+
+    Army testArmy;
+    Unit unit1;
+    Unit unit2;
+    Unit unit3;
+    Unit unit4;
+    Unit unit5;
+    Unit unit6;
+
+    @BeforeEach
+    public void setup() {
+            Army testArmy = new Army("TestArmy");
+            Unit unit1 = new RangedUnit("Test1", 10);
+            Unit unit2 = new RangedUnit("Test2", 10);
+            Unit unit3 = new CavalryUnit("Test3", 10);
+            Unit unit4 = new CavalryUnit("Test4", 10);
+            Unit unit5 = new InfantryUnit("Test5", 10);
+            Unit unit6 = new InfantryUnit("Test6", 10);
+    }
 
     @Test
     public void getNameTest(){

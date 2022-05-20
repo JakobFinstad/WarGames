@@ -4,18 +4,25 @@ import Data.CavalryUnit;
 import Data.InfantryUnit;
 import Data.RangedUnit;
 import Data.Unit;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.assertEquals;
-
+/**
+ * A class that tests writing and reading from file. It uses some basic units to check if the files in resources are right.
+ *
+ * @author 10007
+ * @version 19.05.2022
+ */
 public class ArmyFileManagerTest {
 
     Army testArmy;
-    @Before
+
+    /**
+     * Some code that will run before every test. This is a basic setup for an army for testing.
+     */
+    @BeforeEach
     public void setUp(){
         testArmy = new Army("TestArmy");
         Unit unit1 = new RangedUnit("Test1",10);
@@ -33,13 +40,29 @@ public class ArmyFileManagerTest {
         testArmy.add(unit6);
 
     }
+
+    /**
+     * Testing creation of file. If the file already exist, the file manager will connect to the file for this army.
+     *
+     * test will <code>PASS</code> if the file manager successfully connect or create a file for the army
+     *
+     * test will <code>FAIL</code> if the file manager can't create a file with the army name
+     */
     @Test
     public void testFileCreation(){
         ArmyFileManager fileManager = new ArmyFileManager(testArmy.getName());
     }
 
+
+    /**
+     * Checking for writing potency for the file manager class. Writing the testArmy to the given file.
+     *
+     * test will <code>PASS</code> if the file manager is connected to a file, and successfully write to the file, and the reading was complete
+     *
+     * test will <code>FAIL</code> if the file manager is not connected, or an error occurred during writing to the file or reading
+     */
     @Test
-    public void testWriting(){
+    public void testWritingAndReading(){
         ArmyFileManager fileManager = new ArmyFileManager(testArmy.getName());
         try{
             fileManager.writeToFile(testArmy);
@@ -47,15 +70,17 @@ public class ArmyFileManagerTest {
             System.out.println("Something went wrong");
             System.out.println(ioException.getMessage());
         }
-    }
 
-    @Test
-    public void testReadFromFile() {
-        ArmyFileManager fileManager = new ArmyFileManager(testArmy.getName());
+        /**
+         * Testing reading in the same method to ensure complete writing before the reading.
+         */
         Army army = null;
         try {
             army = fileManager.readFromFile();
             assertEquals(6,army.getAllUnits().size());
+            assertEquals(2,army.getInfatryUnits().size());
+            assertEquals(2,army.getCavalryUnits().size());
+            assertEquals(2,army.getRangedUnits().size());
 
         } catch (Exception e) {
             System.out.println("Something went wrong");
@@ -63,4 +88,6 @@ public class ArmyFileManagerTest {
         }
 
     }
+
+
 }

@@ -40,3 +40,10 @@ CommanderUnit{
         at de har litt forskjellige baseverdier på armor og attack, og siden det blir testet i unit test klassen er det
         ikke nødvendig og teste flere ganger.
 }
+
+ArmyFileManagerTest{
+        TestReading: Her tester jeg om det er 6 units i fila, det kan være vanskelig å teste at den funker riktig hver gang.
+        Så om jeg skulle gjort det annerledes hadde jeg gjort det slik at filen blir slettet etter siste testing, dette gjør at
+        hver gang testene blir kjørt, tester den om den klarer og lage fila, skrive til fila, og at det som leses fra fila er riktig.
+        Dette ville også gjort testingen helt automatisk og fullstending.
+}
