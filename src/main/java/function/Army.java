@@ -1,6 +1,6 @@
-package Function;
+package function;
 
-import Data.*;
+import data.*;
 
 import java.util.List;
 import java.util.ArrayList;

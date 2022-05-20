@@ -1,6 +1,7 @@
-package Function;
+package function;
 
-import Data.Unit;
+import data.Biomes;
+import data.Unit;
 
 /**
  * A class that handle the battle between two armies. Each army gets to defend and attack for each iteration.
@@ -13,9 +14,17 @@ public class Battle {
     private Army armyOne;
     private Army armyTwo;
 
-    public Battle(Army armyOne, Army armyTwo){
+    public Battle(Army armyOne, Army armyTwo, Biomes terrain){
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+
+        for(Unit u:this.armyOne.getAllUnits()){
+            u.setTerrain(terrain);
+        }
+
+        for(Unit u:this.armyTwo.getAllUnits()){
+            u.setTerrain(terrain);
+        }
     }
 
     /**

@@ -1,6 +1,6 @@
-package Function;
+package function;
 
-import Data.*;
+import data.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class UnitFactory {
     public List<Unit> createMultipleUnits(String unitType, String name, int health, int numberOfUnits){
         List<Unit> units = new ArrayList<>();
         for(int i=0;i<numberOfUnits;i++){
-            createUnit(unitType,name,health);
+            units.add(createUnit(unitType,name,health));
         }
 
         return units;

@@ -1,13 +1,14 @@
-package Function;
+package function;
 
-import Data.CavalryUnit;
-import Data.InfantryUnit;
-import Data.RangedUnit;
-import Data.Unit;
+import data.CavalryUnit;
+import data.InfantryUnit;
+import data.RangedUnit;
+import data.Unit;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import java.io.IOException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * A class that tests writing and reading from file. It uses some basic units to check if the files in resources are right.

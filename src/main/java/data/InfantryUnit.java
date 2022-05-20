@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 /**
  * Class for infantry units, with a few fields and some methods for further handling of the war game.
@@ -37,7 +37,11 @@ public class InfantryUnit extends Unit{
      */
     @Override
     public int getAttackBonus() {
-        return 2;
+        int attackBonus = 2;
+        if(this.getTerrain()==Biomes.FORREST){
+            attackBonus = 4;
+        }
+        return attackBonus;
     }
 
     /**
@@ -47,6 +51,11 @@ public class InfantryUnit extends Unit{
      */
     @Override
     public int getResistanceBonus() {
-        return 1;
+        int resistBonus = 1;
+        if(this.getTerrain()==Biomes.FORREST){
+            resistBonus = 2;
+        }
+
+        return resistBonus;
     }
 }

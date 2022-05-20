@@ -1,7 +1,6 @@
-package Data;
-
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+package data;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class to test the attack and resist bonus of the ranged unit.

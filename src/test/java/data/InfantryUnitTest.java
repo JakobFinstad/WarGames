@@ -1,8 +1,8 @@
-package Data;
+package data;
 
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class that test the values of the infatryunits is set to right amount.

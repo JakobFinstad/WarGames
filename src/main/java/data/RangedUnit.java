@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 /**
  * Class for infantry units, with a few fields and some methods for further handling of the war game.
@@ -53,6 +53,11 @@ public class RangedUnit extends Unit {
         }
         if(timeDefended == 1){
             resistanceBonus = 4;
+        }
+        if(this.getTerrain()==Biomes.HILL){
+            resistanceBonus += 2;
+        }else if(this.getTerrain()==Biomes.FORREST&&resistanceBonus>2){
+            resistanceBonus -=1;
         }
         return resistanceBonus;
     }

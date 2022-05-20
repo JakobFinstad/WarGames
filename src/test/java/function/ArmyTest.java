@@ -1,9 +1,9 @@
-package Function;
+package function;
 
-import Data.CavalryUnit;
-import Data.InfantryUnit;
-import Data.RangedUnit;
-import Data.Unit;
+import data.CavalryUnit;
+import data.InfantryUnit;
+import data.RangedUnit;
+import data.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

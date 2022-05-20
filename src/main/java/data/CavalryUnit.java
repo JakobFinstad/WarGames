@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 /**
  * Class for cavalry units, with a few fields and some methods for further handling of the war game.
@@ -41,6 +41,9 @@ public class CavalryUnit extends Unit{
         if(timeAttacked == 0){
             attackBonus = 6;
         }
+        if(this.getTerrain()==Biomes.PLAINS){
+            attackBonus+=2;
+        }
         return attackBonus;
     }
 
@@ -51,6 +54,10 @@ public class CavalryUnit extends Unit{
      */
     @Override
     public int getResistanceBonus() {
-        return 1;
+        int resistBonus = 1;
+        if(this.getTerrain()==Biomes.FORREST){
+            resistBonus = 0;
+        }
+        return resistBonus;
     }
 }

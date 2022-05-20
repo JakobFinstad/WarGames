@@ -1,7 +1,8 @@
-package Data;
+package data;
 
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class to test the unit class. Test if the constructor is right and the methodes in unit works.

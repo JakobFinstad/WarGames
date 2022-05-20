@@ -1,7 +1,6 @@
-package Function;
+package function;
 
-import Data.InfantryUnit;
-import Data.Unit;
+import data.Unit;
 
 import java.io.File;
 import java.io.FileNotFoundException;

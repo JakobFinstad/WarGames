@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 /**
  * Class for commander units, with a few fields and some methods for further handling of the war game.

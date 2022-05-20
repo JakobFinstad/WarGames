@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import java.util.Locale;
 
@@ -16,6 +16,7 @@ public abstract class Unit {
     protected int armor;
     protected int timeDefended = 0;
     protected int timeAttacked = 0;
+    private Biomes terrain;
 
     /**
      * Constructor for objects witch inherits from this class.
@@ -30,6 +31,7 @@ public abstract class Unit {
         this.setHealth(health);
         this.setArmor(armor);
         this.setAttack(attack);
+        this.terrain = null;
     }
 
     /**
@@ -101,6 +103,15 @@ public abstract class Unit {
     }
 
     /**
+     * Get the biome of this unit.
+     *
+     * @return the biome of the unit
+     */
+    public Biomes getTerrain(){
+        return this.terrain;
+    }
+
+    /**
      * Set the amount of health to the unit.
      *
      * @param health the amount of health, if below 0 the health is set to 0
@@ -150,6 +161,15 @@ public abstract class Unit {
         }else{
             this.armor = 0;
         }
+    }
+
+    /**
+     * Set the terrain of this unit.
+     *
+     * @param terrain the biome for this unit
+     */
+    public void setTerrain(Biomes terrain){
+        this.terrain = terrain;
     }
 
     /**
