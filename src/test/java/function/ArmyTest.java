@@ -22,19 +22,13 @@ public class ArmyTest {
     Unit unit1;
     Unit unit2;
     Unit unit3;
-    Unit unit4;
-    Unit unit5;
-    Unit unit6;
 
     @BeforeEach
     public void setup() {
-            Army testArmy = new Army("TestArmy");
-            Unit unit1 = new RangedUnit("Test1", 10);
-            Unit unit2 = new RangedUnit("Test2", 10);
-            Unit unit3 = new CavalryUnit("Test3", 10);
-            Unit unit4 = new CavalryUnit("Test4", 10);
-            Unit unit5 = new InfantryUnit("Test5", 10);
-            Unit unit6 = new InfantryUnit("Test6", 10);
+            testArmy = new Army("TestArmy");
+            unit1 = new RangedUnit("Test1", 10);
+            unit2 = new RangedUnit("Test2", 10);
+            unit3 = new CavalryUnit("Test3", 10);
     }
 
     @Test

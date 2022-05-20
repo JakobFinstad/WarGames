@@ -1,0 +1,23 @@
+.vbox{
+    -fx-padding: 30px;
+    -fx-spacing: 50px;
+    -fx-alignment: center;
+}
+
+.label{
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-font-family: Papyrus;
+}
+
+.rootNode{
+    -fx-alignment: top-center;
+    -fx-spacing: 60px;
+    -fx-padding: 200px;
+}
+
+.button{
+    -fx-alignment: center;
+    -fx-font-size: 25px;
+    -fx-font-family: "papyrus";
+}

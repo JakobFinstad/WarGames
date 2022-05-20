@@ -1,0 +1,7 @@
+TestArmy
+RangedUnit,test1,10
+RangedUnit,test2,10
+CavalryUnit,test3,10
+CavalryUnit,test4,10
+InfantryUnit,test5,10
+InfantryUnit,test6,10
