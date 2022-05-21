@@ -1,7 +1,7 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.Biomes;
-import data.Unit;
+import no.ntnu.iir.jakobfin.data.Biomes;
+import no.ntnu.iir.jakobfin.data.Unit;
 
 /**
  * A class that handle the battle between two armies. Each army gets to defend and attack for each iteration.

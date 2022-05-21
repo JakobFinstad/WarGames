@@ -1,9 +1,7 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.CavalryUnit;
-import data.InfantryUnit;
-import data.RangedUnit;
-import data.Unit;
+
+import no.ntnu.iir.jakobfin.data.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -26,15 +24,16 @@ public class ArmyTest {
     @BeforeEach
     public void setup() {
             testArmy = new Army("TestArmy");
-            unit1 = new RangedUnit("Test1", 10);
-            unit2 = new RangedUnit("Test2", 10);
-            unit3 = new CavalryUnit("Test3", 10);
+            UnitFactory factory = new UnitFactory();
+            unit1 = factory.createUnit("RangedUnit","Test1",10);
+            unit2 = factory.createUnit("RangedUnit","Test2",10);;
+            unit3 = factory.createUnit("CavalryUnit","Test3",10);;
     }
 
     @Test
     public void getNameTest(){
-        Army testName = new Army("Testname");
-        assertEquals("Testname",testName.getName());
+        Army testName = new Army("TestName");
+        assertEquals("TestName",testName.getName());
     }
 
     @Test

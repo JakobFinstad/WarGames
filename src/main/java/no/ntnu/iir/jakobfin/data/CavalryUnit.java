@@ -1,4 +1,4 @@
-package data;
+package no.ntnu.iir.jakobfin.data;
 
 /**
  * Class for cavalry units, with a few fields and some methods for further handling of the war game.

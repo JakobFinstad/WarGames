@@ -1,4 +1,4 @@
-package data;
+package no.ntnu.iir.jakobfin.data;
 
 /**
  *

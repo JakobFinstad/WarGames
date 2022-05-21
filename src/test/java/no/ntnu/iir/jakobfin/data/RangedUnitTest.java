@@ -1,4 +1,4 @@
-package data;
+package no.ntnu.iir.jakobfin.data;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

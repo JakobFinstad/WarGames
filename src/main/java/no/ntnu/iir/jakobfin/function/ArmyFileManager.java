@@ -1,6 +1,6 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.Unit;
+import no.ntnu.iir.jakobfin.data.Unit;
 
 import java.io.File;
 import java.io.FileNotFoundException;

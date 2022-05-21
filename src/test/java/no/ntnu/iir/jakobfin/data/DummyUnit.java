@@ -1,4 +1,4 @@
-package data;
+package no.ntnu.iir.jakobfin.data;
 
 /**
  * A class that is meant for testing of the unit class. That means that this class only has the most basic

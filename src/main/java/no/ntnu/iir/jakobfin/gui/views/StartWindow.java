@@ -11,11 +11,14 @@ import javafx.stage.Stage;
 
 public class StartWindow extends Application {
 
+    private Scene scene;
+
+
     @Override
     public void start(Stage stage){
 
         try {
-            SceneChanger controller = new SceneChanger(this);
+            SceneChanger controller = new SceneChanger(stage);
 
             GridPane rootNode = new GridPane();
 
@@ -23,7 +26,6 @@ public class StartWindow extends Application {
             Label title = new Label("Hearts of Steel");
             Button startButton = new Button("Run a rig");
 
-            /**middleVBox.getChildren().add(title);*/
             middleVBox.getChildren().add(startButton);
 
             rootNode.add(title,1,0,1,1);
@@ -34,9 +36,9 @@ public class StartWindow extends Application {
             startButton.getStyleClass().add("button");
             rootNode.getStyleClass().add("rootNode");
 
-            startButton.setOnAction(actionEvent -> controller.jumpToMenu(stage));
+            startButton.setOnAction(actionEvent -> controller.goToMainMenu(stage));
 
-            Scene scene = new Scene(rootNode, 800, 800);
+            scene = new Scene(rootNode, 800, 800);
             scene.getStylesheets().add(getClass().getResource("mainWindow.css").toExternalForm());
             stage.centerOnScreen();
             stage.setScene(scene);
@@ -54,5 +56,9 @@ public class StartWindow extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Scene getScene(){
+        return this.scene;
     }
 }

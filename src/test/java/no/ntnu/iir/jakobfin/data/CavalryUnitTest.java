@@ -1,7 +1,7 @@
-package data;
+package no.ntnu.iir.jakobfin.data;
 
-import function.Army;
-import function.UnitFactory;
+import no.ntnu.iir.jakobfin.function.Army;
+import no.ntnu.iir.jakobfin.function.UnitFactory;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

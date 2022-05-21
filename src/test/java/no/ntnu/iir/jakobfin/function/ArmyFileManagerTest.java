@@ -1,11 +1,14 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.CavalryUnit;
-import data.InfantryUnit;
-import data.RangedUnit;
-import data.Unit;
+import no.ntnu.iir.jakobfin.data.CavalryUnit;
+import no.ntnu.iir.jakobfin.data.InfantryUnit;
+import no.ntnu.iir.jakobfin.data.RangedUnit;
+import no.ntnu.iir.jakobfin.data.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,20 +29,16 @@ public class ArmyFileManagerTest {
     @BeforeEach
     public void setUp(){
         testArmy = new Army("TestArmy");
-        Unit unit1 = new RangedUnit("Test1",10);
-        Unit unit2 = new RangedUnit("Test2",10);
-        Unit unit3 = new CavalryUnit("Test3",10);
-        Unit unit4 = new CavalryUnit("Test4",10);
-        Unit unit5 = new InfantryUnit("Test5",10);
-        Unit unit6 = new InfantryUnit("Test6",10);
+        UnitFactory factory = new UnitFactory();
 
-        testArmy.add(unit1);
-        testArmy.add(unit2);
-        testArmy.add(unit3);
-        testArmy.add(unit4);
-        testArmy.add(unit5);
-        testArmy.add(unit6);
+        List<Unit> factoryList = new ArrayList<>();
 
+        factoryList.addAll(factory.createMultipleUnits("RangedUnit","Test",10,2));
+        factoryList.addAll(factory.createMultipleUnits("CavalryUnit","Test",10,2));
+        factoryList.addAll(factory.createMultipleUnits("InfantryUnit","Test",10,2));
+
+
+        testArmy.addAll(factoryList);
     }
 
     /**

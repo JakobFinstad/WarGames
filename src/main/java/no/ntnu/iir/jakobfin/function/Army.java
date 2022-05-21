@@ -1,6 +1,7 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.*;
+
+import no.ntnu.iir.jakobfin.data.*;
 
 import java.util.List;
 import java.util.ArrayList;

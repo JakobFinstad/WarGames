@@ -1,9 +1,10 @@
-package function;
+package no.ntnu.iir.jakobfin.function;
 
-import data.*;
+import no.ntnu.iir.jakobfin.data.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * A class to create units with given parameters. This makes it easier to create multiple units of same type and create
@@ -22,7 +23,7 @@ public class UnitFactory {
      * @param health the amount of hitpoints to this unit
      * @return the unit that was created, or null if the unit was not created
      */
-    public Unit createUnit(String unitType ,String name, int health ){
+    public Unit createUnit(String unitType , String name, int health ){
         Unit unit = null;
         if(unitType.equals("InfantryUnit")){
             unit = new InfantryUnit(name,health);

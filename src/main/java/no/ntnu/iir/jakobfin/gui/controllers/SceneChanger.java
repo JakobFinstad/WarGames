@@ -2,19 +2,25 @@ package no.ntnu.iir.jakobfin.gui.controllers;
 
 import javafx.stage.Stage;
 import no.ntnu.iir.jakobfin.gui.views.MenuView;
+import no.ntnu.iir.jakobfin.gui.views.SimulateMenu;
 import no.ntnu.iir.jakobfin.gui.views.StartWindow;
 
 public class SceneChanger {
+    private Stage stage;
 
-    private StartWindow view;
-    private MenuView menu;
-    public SceneChanger(StartWindow view){
-        this.view = view;
+    public SceneChanger(Stage stage){
+        this.stage = stage;
     }
 
-    public void jumpToMenu(Stage stage){
-        this.menu = new MenuView(stage);
-        stage.setScene(menu.getScene());
+
+    public void goToMainMenu(Stage stage){
+        MenuView menuView = new MenuView(stage);
+        stage.setScene(menuView.getScene());
+    }
+
+    public void goToSimulationMenu(Stage stage){
+        SimulateMenu simulationMenu = new SimulateMenu();
+        stage.setScene(simulationMenu.getScene());
     }
 
 }
