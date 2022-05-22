@@ -14,6 +14,13 @@ public class Battle {
     private Army armyOne;
     private Army armyTwo;
 
+    /**
+     * Battle between two armies. The army one have a small advantage, but the battle is fairly square.
+     *
+     * @param armyOne the first army with the slight advantage
+     * @param armyTwo the second army to battle
+     * @param terrain the terrain the armies are battling in
+     */
     public Battle(Army armyOne, Army armyTwo, Biomes terrain){
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
@@ -43,16 +50,17 @@ public class Battle {
             Unit armyTwoDefender = armyTwo.getRandomUnit();
 
             armyOneAttacker.attack(armyTwoDefender);
-            if(armyOneDefender.getHealth()==0){
+            if(armyTwoDefender.getHealth()<=0){
                 armyTwo.remove(armyTwoDefender);
             }
 
             if(armyTwo.getAllUnits().contains(armyTwoAttacker)) {
                 armyTwoAttacker.attack(armyOneDefender);
-                if (armyOneDefender.getHealth() == 0) {
+                if (armyOneDefender.getHealth() <= 0) {
                     armyOne.remove(armyOneDefender);
                 }
             }
+
 
         }
         if(armyOne.hasUnit()){

@@ -117,7 +117,7 @@ public abstract class Unit {
      * @param health the amount of health, if below 0 the health is set to 0
      */
     public void setHealth(int health){
-        if(health>=0){
+        if(health>0){
             this.health = health;
         }else{
             this.health = 0;

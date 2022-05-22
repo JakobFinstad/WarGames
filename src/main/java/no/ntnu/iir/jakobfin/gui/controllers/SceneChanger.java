@@ -14,18 +14,18 @@ public class SceneChanger {
     }
 
 
-    public void goToMainMenu(Stage stage){
-        MenuView menuView = new MenuView(stage);
+    public void goToMainMenu(Stage stage, ArmiesController armiesController){
+        MenuView menuView = new MenuView(stage, armiesController);
         stage.setScene(menuView.getScene());
     }
 
-    public void goToSimulationMenu(Stage stage){
-        SimulateMenu simulationMenu = new SimulateMenu(stage);
+    public void goToSimulationMenu(Stage stage, ArmiesController armiesController){
+        SimulateMenu simulationMenu = new SimulateMenu(stage, armiesController);
         stage.setScene(simulationMenu.getScene());
     }
 
-    public void goToManageArmies(Stage stage){
-        ManageArmies manageArmies = new ManageArmies(stage);
+    public void goToManageArmies(Stage stage, ArmiesController armiesController){
+        ManageArmies manageArmies = new ManageArmies(stage, armiesController);
         stage.setScene(manageArmies.getScene());
     }
 

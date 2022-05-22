@@ -77,10 +77,8 @@ public class Army {
      * @param unit the unit you want to remove
      */
     public void remove(Unit unit){
-        for (Unit u : this.units){
-            if(u==unit){
-                units.remove(u);
-            }
+        if(this.units.contains(unit)){
+            this.units.remove(unit);
         }
     }
 
@@ -113,7 +111,7 @@ public class Army {
      */
     public Unit getRandomUnit(){
         Random random = new Random();
-        int index = random.nextInt();
+        int index = random.nextInt(this.getAllUnits().size());
         return this.units.get(index);
     }
 
@@ -125,22 +123,6 @@ public class Army {
                 '}';
     }
 
-    /**
-     * Check if army contains a specific unit.
-     *
-     * @param object the object you want to search for
-     * @return true if it contains object
-     */
-    public boolean equals(Object object){
-        /**boolean equals = false;
-        for (Unit u: this.units) {
-            if(u==object){
-                equals = true;
-            }
-        }
-        return equals;*/
-        return units.contains(object);
-    }
 
     @Override
     public int hashCode() {

@@ -6,14 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import no.ntnu.iir.jakobfin.gui.controllers.ArmiesController;
 import no.ntnu.iir.jakobfin.gui.controllers.SceneChanger;
 
 public class MenuView {
 
     private Scene scene;
+    private ArmiesController armiesController;
 
-    public MenuView(Stage stage){
+    public MenuView(Stage stage, ArmiesController armiesController){
 
+        this.armiesController = armiesController;
         AnchorPane rootNode = new AnchorPane();
         SceneChanger sceneChanger = new SceneChanger(stage);
 
@@ -24,8 +27,9 @@ public class MenuView {
         Button simulateMenu = new Button("Ready the chase guns");
         HBox buttonBox = new HBox();
 
-        simulateMenu.setOnAction(actionEvent ->sceneChanger.goToSimulationMenu(stage));
-        manageArmies.setOnAction(actionEvent -> sceneChanger.goToManageArmies(stage));
+        simulateMenu.setOnAction(actionEvent ->sceneChanger.goToSimulationMenu(stage, armiesController));
+        importArmies.setOnAction(actionEvent -> armiesController.importArmy());
+        manageArmies.setOnAction(actionEvent -> sceneChanger.goToManageArmies(stage, armiesController));
 
 
         buttonBox.getChildren().add(manageArmies);

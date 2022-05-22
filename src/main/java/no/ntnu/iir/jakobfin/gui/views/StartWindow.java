@@ -1,6 +1,7 @@
 package no.ntnu.iir.jakobfin.gui.views;
 
 import javafx.scene.layout.*;
+import no.ntnu.iir.jakobfin.gui.controllers.ArmiesController;
 import no.ntnu.iir.jakobfin.gui.controllers.SceneChanger;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 public class StartWindow extends Application {
 
     private Scene scene;
+    private ArmiesController armiesController;
 
 
     @Override
@@ -19,6 +21,8 @@ public class StartWindow extends Application {
 
         try {
             SceneChanger controller = new SceneChanger(stage);
+
+            armiesController = new ArmiesController();
 
             GridPane rootNode = new GridPane();
 
@@ -36,7 +40,7 @@ public class StartWindow extends Application {
             startButton.getStyleClass().add("button");
             rootNode.getStyleClass().add("rootNode");
 
-            startButton.setOnAction(actionEvent -> controller.goToMainMenu(stage));
+            startButton.setOnAction(actionEvent -> controller.goToMainMenu(stage,armiesController));
 
             scene = new Scene(rootNode, 800, 800);
             scene.getStylesheets().add(getClass().getResource("mainWindow.css").toExternalForm());
@@ -58,7 +62,4 @@ public class StartWindow extends Application {
         launch(args);
     }
 
-    public Scene getScene(){
-        return this.scene;
-    }
 }

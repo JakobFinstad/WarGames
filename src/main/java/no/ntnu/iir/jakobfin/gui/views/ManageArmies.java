@@ -22,17 +22,15 @@ public class ManageArmies {
     private Scene scene;
     private ObservableList<Army> armyObservableList;
     private Army testArmy = new Army("Test");
-    private List<Army> armyList;
     private List<Unit> unitList;
     private ObservableList<Unit> unitObservableList;
     private ArmiesController armyController;
 
     private TableView<Unit> unitTableView;
 
-    public ManageArmies(Stage stage){
+    public ManageArmies(Stage stage, ArmiesController armiesController){
         //Creating the list
-        armyList = new ArrayList<>();
-        armyController = new ArmiesController();
+        this.armyController = armiesController;
         unitList = new ArrayList<>();
 
         //Filling the tables
@@ -47,7 +45,7 @@ public class ManageArmies {
 
 
 
-        mainMenu.setOnAction(actionEvent -> sceneChanger.goToMainMenu(stage));
+        mainMenu.setOnAction(actionEvent -> sceneChanger.goToMainMenu(stage, armiesController));
         setUpTableArmy();
 
         rootNode.setTop(title);
@@ -75,7 +73,7 @@ public class ManageArmies {
             TableView<Army> leftTableArmies = new TableView<>();
 
 
-            leftTableArmies.setItems(armyController.getArmyObservableList(armyList));
+            leftTableArmies.setItems(armyController.getArmyObservableList(armyController.getArmyList()));
             leftTableArmies.getColumns().add(nameColumn);
 
             leftTableArmies.setOnMousePressed(mouseEvent -> {
@@ -118,17 +116,17 @@ public class ManageArmies {
     public void fillTable(){
         UnitFactory factory = new UnitFactory();
         Army army1 = new Army("Human Army");
-        army1.addAll(factory.createMultipleUnits("RangedUnit","Yolo",10,10));
-        army1.addAll(factory.createMultipleUnits("CavalryUnit","My man Rammus",10,10));
-        army1.addAll(factory.createMultipleUnits("InfantryUnit","Ok",10,10));
+        army1.addAll(factory.createMultipleUnits("RangedUnit","Yolo",10,1));
+        army1.addAll(factory.createMultipleUnits("CavalryUnit","My man Rammus",10,1));
+        army1.addAll(factory.createMultipleUnits("InfantryUnit","Ok",10,1));
 
         Army army2 = new Army("Ogre Army");
         army2.addAll(factory.createMultipleUnits("RangedUnit","Hoo",10,10));
         army2.addAll(factory.createMultipleUnits("CavalryUnit","Little jo",10,10));
         army2.addAll(factory.createMultipleUnits("InfantryUnit","Some dudes",10,100));
 
-        armyList.add(army1);
-        armyList.add(army2);
+        armyController.addArmy(army1);
+        armyController.addArmy(army2);
     }
 
 }
