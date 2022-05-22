@@ -43,19 +43,18 @@ public class UnitTest {
      */
     @Test
     public void testConstructorNegative(){
-        DummyUnit unit2 = new DummyUnit("OK",-10,10,10);
-        DummyUnit unit3 = new DummyUnit("",10,-10,10);
-        DummyUnit unit4 = new DummyUnit(null,10,10,-10);
+
 
         //Testing negative health
-        assertEquals(0,unit2.getHealth());
+        assertThrows(IllegalArgumentException.class,()-> new DummyUnit("OK",-10,10,10));
         //Testing name not null or empty
-        assertEquals("Invalid name",unit3.getName());
-        assertEquals("Invalid name", unit4.getName());
-        //Testing negative health, armor and attack values
-        assertEquals(0,unit2.getHealth());
-        assertEquals(0,unit3.getAttack());
-        assertEquals(0,unit4.getArmor());
+        assertThrows(IllegalArgumentException.class,()->new DummyUnit("",10,10,10));
+        assertThrows(IllegalArgumentException.class,()->new DummyUnit(null,10,10,10));
+        //Testing negative armor
+        assertThrows(IllegalArgumentException.class,()->new DummyUnit("ok",10,10,-10));
+        //Testing negative attack
+        assertThrows(IllegalArgumentException.class,()->new DummyUnit("Ok",10,-10,10));
+
     }
 
     /**

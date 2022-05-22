@@ -1,6 +1,8 @@
 package no.ntnu.iir.jakobfin.function;
 
 import no.ntnu.iir.jakobfin.data.Unit;
+import no.ntnu.iir.jakobfin.exceptions.CorruptLineInFileException;
+import no.ntnu.iir.jakobfin.exceptions.WrongFileFormatException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,19 +42,16 @@ public class ArmyFileManager {
      * Constructor that connect the file manager to a file that already exists.
      *
      * @param file the file to connect the manager to
+     * @throws WrongFileFormatException throws if the file is in the wrong format, doesn't end with csv
      */
-    public ArmyFileManager(File file){
-        try {
-            this.armyFile = file;
-        }catch(NullPointerException nu){
-            System.out.println("Cannot find file");
-            System.out.println(nu.getMessage());
-        }catch (Exception e){
-            // Skriv inn Throw til senere håndtering
-            // Eks. throw new "NoeGikkGaltException";
-            System.out.println("Someting went wrong");
-            System.out.println(e.getMessage());
-        }
+    public ArmyFileManager(File file) throws WrongFileFormatException {
+            String armyFileName = file.getPath().substring(file.getPath().length()-3);
+            if(!armyFileName.equals("csv")) {
+                throw new WrongFileFormatException(file.getPath());
+            }else {
+                this.armyFile = file;
+            }
+
     }
 
 
@@ -80,17 +79,24 @@ public class ArmyFileManager {
      *
      * @return list with units created in the reading process
      * @throws FileNotFoundException gets thrown if the file cannot be found, or the path for the file is wrong
+     * @throws CorruptLineInFileException thrown if there was a problem of the format of the read line
      */
-   public Army readFromFile() throws FileNotFoundException {
+   public Army readFromFile() throws FileNotFoundException, CorruptLineInFileException {
         Army readArmy = null;
         UnitFactory factory = new UnitFactory();
 
         Scanner scanner = new Scanner(armyFile);
         readArmy = new Army(scanner.nextLine());
-        while(scanner.hasNextLine()){
-            String[] scannerline = scanner.nextLine().split(",");
-            readArmy.add(factory.createUnit(scannerline[0],scannerline[1],Integer.valueOf(scannerline[2])));
-        }
+            while (scanner.hasNextLine()) {
+                String[] scannerline = scanner.nextLine().split(",");
+                try {
+                    readArmy.add(factory.createUnit(scannerline[0], scannerline[1], Integer.valueOf(scannerline[2])));
+                }catch (IllegalArgumentException ile){
+                    int number = readArmy.getAllUnits().size()+2;
+                    throw new CorruptLineInFileException(String.valueOf(number));
+                }
+            }
+
 
         return readArmy;
     }

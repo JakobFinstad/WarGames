@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SimulationController {
 
-        public void simulate(List<Army> armyList){
+        public void simulate(List<Army> armyList,Biomes terrain){
             armyList = generateGhostArmies(armyList);
             Army army1 = new Army(armyList.get(0).getName());
             army1.addAll(armyList.get(0).getAllUnits());
@@ -29,7 +29,7 @@ public class SimulationController {
             Army army2 = new Army(armyList.get(1).getName());
             army2.addAll(armyList.get(1).getAllUnits());
 
-            Battle battle = new Battle(army1,army2, Biomes.FORREST);
+            Battle battle = new Battle(army1,army2, terrain);
             displayWinner(battle.simulate());
         }
 

@@ -22,8 +22,9 @@ public class UnitFactory {
      * @param name the name of the unit that shall be created
      * @param health the amount of hitpoints to this unit
      * @return the unit that was created, or null if the unit was not created
+     * @throws IllegalArgumentException throws if no unit was created
      */
-    public Unit createUnit(String unitType , String name, int health ){
+    public Unit createUnit(String unitType , String name, int health ) throws IllegalArgumentException{
         Unit unit = null;
         if(unitType.equals("InfantryUnit")){
             unit = new InfantryUnit(name,health);
@@ -39,6 +40,10 @@ public class UnitFactory {
 
         if(unitType.equals("CommanderUnit")){
             unit = new CommanderUnit(name, health);
+        }
+
+        if(unit==null){
+            throw new IllegalArgumentException("Wrong input for the name of a unit");
         }
 
         return unit;

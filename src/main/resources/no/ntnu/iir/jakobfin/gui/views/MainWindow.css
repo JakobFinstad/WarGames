@@ -21,3 +21,8 @@
     -fx-font-size: 25px;
     -fx-font-family: "papyrus";
 }
+
+#selected.button:focused{
+    -fx-background-color: green;
+}
+

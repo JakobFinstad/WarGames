@@ -25,7 +25,7 @@ public class Army {
      * @param name name of the army
      */
     public Army(String name){
-        this.name = name;
+        this.setName(name);
         units = new ArrayList<>();
     }
 
@@ -36,10 +36,23 @@ public class Army {
      * @param units a list with units to put inside this army
      */
     public Army(String name, List<Unit> units){
-        this.name = name;
+        this.setName(name);
         this.units = units;
     }
 
+    /**
+     * Set name for this army.
+     *
+     * @param name the name of the army
+     * @throws IllegalArgumentException throws if the name is null or empty ""
+     */
+    private void setName(String name) throws IllegalArgumentException{
+        if(!name.isEmpty()&&!name.isBlank()){
+            this.name = name;
+        }else{
+            throw new IllegalArgumentException();
+        }
+    }
     /**
      * Get name of this army.
      *
@@ -53,8 +66,9 @@ public class Army {
      * Add a unit to this army.
      *
      * @param unit the unit you want to add
+     * @throws IllegalArgumentException throws if the unit was not added to the list
      */
-    public void add(Unit unit){
+    public void add(Unit unit) throws IllegalArgumentException{
         units.add(unit);
     }
 
@@ -115,6 +129,11 @@ public class Army {
         return this.units.get(index);
     }
 
+    /**
+     * Get standard format for the army.
+     *
+     * @return string with everything
+     */
     @Override
     public String toString() {
         return "Army{" +
@@ -124,6 +143,11 @@ public class Army {
     }
 
 
+    /**
+     * Get the hascode for this army.
+     *
+     * @return the hascode for this army
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, units);
@@ -179,7 +203,7 @@ public class Army {
     public List<Unit> getCommanderUnits(){
         CommanderUnit unit = new CommanderUnit("10",10);
         List<Unit> units = this.units.stream().
-                filter(u->u.getClass()==unit.getClass()).
+                filter(u->u.getClass() == unit.getClass()).
                 collect(Collectors.toList());
 
         return units;

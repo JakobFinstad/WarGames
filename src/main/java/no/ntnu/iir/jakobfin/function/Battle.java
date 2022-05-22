@@ -50,13 +50,13 @@ public class Battle {
             Unit armyTwoDefender = armyTwo.getRandomUnit();
 
             armyOneAttacker.attack(armyTwoDefender);
-            if(armyTwoDefender.getHealth()<=0){
+            if(armyTwoDefender.getHealth() == 0){
                 armyTwo.remove(armyTwoDefender);
             }
 
             if(armyTwo.getAllUnits().contains(armyTwoAttacker)) {
                 armyTwoAttacker.attack(armyOneDefender);
-                if (armyOneDefender.getHealth() <= 0) {
+                if (armyOneDefender.getHealth() == 0) {
                     armyOne.remove(armyOneDefender);
                 }
             }

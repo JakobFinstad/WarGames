@@ -26,7 +26,7 @@ public abstract class Unit {
      * @param attack the amount of attack damage
      * @param armor a value that indicates the units resistance
      */
-    public Unit(String name, int health, int attack, int armor) {
+    public Unit(String name, int health, int attack, int armor){
         this.setName(name);
         this.setHealth(health);
         this.setArmor(armor);
@@ -114,13 +114,14 @@ public abstract class Unit {
     /**
      * Set the amount of health to the unit.
      *
-     * @param health the amount of health, if below 0 the health is set to 0
+     * @param health the amount of health
+     * @throws IllegalArgumentException throws if the health is below 0
      */
-    public void setHealth(int health){
-        if(health>0){
+    public void setHealth(int health) throws IllegalArgumentException{
+        if(health>=0){
             this.health = health;
         }else{
-            this.health = 0;
+            throw new IllegalArgumentException();
         }
     }
 
@@ -128,12 +129,13 @@ public abstract class Unit {
      * Set the name of the unit.
      *
      * @param name name of the unit, cannot be "" and not null
+     * @throws IllegalArgumentException throws if name is null or empty
      */
-    protected void setName(String name){
+    protected void setName(String name) throws IllegalArgumentException{
         if (name!=null&&!name.isEmpty()){
             this.name = name.strip().toLowerCase(Locale.ROOT);
         }else{
-            this.name = "Invalid name";
+            throw new IllegalArgumentException();
         }
     }
 
@@ -141,12 +143,13 @@ public abstract class Unit {
      * Set attack of the unit.
      *
      * @param attack the attack of the unit
+     * @throws IllegalArgumentException throws if new attack is below 0
      */
-    protected void setAttack(int attack){
-        if(attack>0) {
+    protected void setAttack(int attack) throws IllegalArgumentException{
+        if(attack>=0) {
             this.attack = attack;
         }else{
-            this.attack = 0;
+            throw new IllegalArgumentException();
         }
     }
 
@@ -154,12 +157,13 @@ public abstract class Unit {
      * Set the amount of armor to the unit.
      *
      * @param armor value resembling damage resistance
+     * @throws IllegalArgumentException throws if the new armor is below 0
      */
-    protected void setArmor(int armor){
-        if(armor >0) {
+    protected void setArmor(int armor) throws IllegalArgumentException{
+        if(armor >=0) {
             this.armor = armor;
         }else{
-            this.armor = 0;
+            throw new IllegalArgumentException();
         }
     }
 
@@ -188,17 +192,22 @@ public abstract class Unit {
     }
 
     /**
-     * Attack a given enemy unit, if the attack reduces the enemy's health below 0, the new health to the enemy will be set to 0.
+     * Attack a given enemy unit, if the attack reduces the enemy's health below 0, the method throws.
      *
      * @param enemyUnit the enemy unit this unit attacks
+     * @throws IllegalArgumentException throws if the new health is below 0
      */
-    public void attack(Unit enemyUnit){
+    public void attack(Unit enemyUnit) throws IllegalArgumentException{
         int newHealth = enemyUnit.getHealth() - (this.attack + this.getAttackBonus()) + (enemyUnit.getArmor() + enemyUnit.getResistanceBonus());
-        if (newHealth<0){
+
+        try {
+            if (newHealth < this.getHealth()) {
+                enemyUnit.setHealth(newHealth);
+            }
+        }catch (IllegalArgumentException illegalArgumentException){
             enemyUnit.setHealth(0);
-        }else if(newHealth<this.getHealth()){
-            enemyUnit.setHealth(newHealth);
         }
+
         this.incrementTimeAttacked();
         enemyUnit.incrementTimeDefended();
     }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * A class that tests the army and the armies function.
@@ -21,6 +22,9 @@ public class ArmyTest {
     Unit unit2;
     Unit unit3;
 
+    /**
+     * Setup that run before each test.
+     */
     @BeforeEach
     public void setup() {
             testArmy = new Army("TestArmy");
@@ -30,12 +34,26 @@ public class ArmyTest {
             unit3 = factory.createUnit("CavalryUnit","Test3",10);;
     }
 
+    /**
+     * Test the method for getting the army name.
+     *
+     * test will <code>PASS</code> if the army name was retrieved
+     *
+     * test will <code>FAIL</code> if the name was not retrieved
+     */
     @Test
     public void getNameTest(){
         Army testName = new Army("TestName");
         assertEquals("TestName",testName.getName());
     }
 
+    /**
+     * Test adding units to the army.
+     *
+     * test will <code>PASS</code> if the units was added successfully
+     *
+     * test will <code>FAIL</code> if the units didn't get added to the army
+     */
     @Test
     public void testAdd(){
         List<Unit> testList = new ArrayList<>();
@@ -46,5 +64,18 @@ public class ArmyTest {
         assertEquals(1,testArmy.getAllUnits().size());
         testArmy.addAll(testList);
         assertEquals(3,testArmy.getAllUnits().size());
+    }
+
+    /**
+     * Test for negative values for army name.
+     *
+     * test will <code>PASS</code> if the set name/ constructor throws illegalargumentexception
+     *
+     * test will <code>FAIL</code> if an object of army with blank or empty name is created
+     */
+    @Test
+    public void negativeNameTest(){
+        assertThrows(IllegalArgumentException.class,()->new Army(""));
+        assertThrows(IllegalArgumentException.class,()->new Army(null));
     }
 }
