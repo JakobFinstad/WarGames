@@ -24,7 +24,8 @@ public class MenuView {
         Button simulateMenu = new Button("Ready the chase guns");
         HBox buttonBox = new HBox();
 
-        manageArmies.setOnAction(actionEvent ->sceneChanger.goToSimulationMenu(stage));
+        simulateMenu.setOnAction(actionEvent ->sceneChanger.goToSimulationMenu(stage));
+        manageArmies.setOnAction(actionEvent -> sceneChanger.goToManageArmies(stage));
 
 
         buttonBox.getChildren().add(manageArmies);

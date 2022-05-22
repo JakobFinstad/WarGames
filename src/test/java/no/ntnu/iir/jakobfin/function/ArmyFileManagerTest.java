@@ -1,8 +1,5 @@
 package no.ntnu.iir.jakobfin.function;
 
-import no.ntnu.iir.jakobfin.data.CavalryUnit;
-import no.ntnu.iir.jakobfin.data.InfantryUnit;
-import no.ntnu.iir.jakobfin.data.RangedUnit;
 import no.ntnu.iir.jakobfin.data.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import java.io.IOException;
