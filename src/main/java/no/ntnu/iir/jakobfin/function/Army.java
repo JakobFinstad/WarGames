@@ -2,7 +2,6 @@ package no.ntnu.iir.jakobfin.function;
 
 
 import no.ntnu.iir.jakobfin.data.*;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -30,7 +29,7 @@ public class Army {
     }
 
     /**
-     * Constructor for an army.
+     * Constructor for an army. With name and a list of its units.
      *
      * @param name the name of the army
      * @param units a list with units to put inside this army
@@ -44,7 +43,7 @@ public class Army {
      * Set name for this army.
      *
      * @param name the name of the army
-     * @throws IllegalArgumentException throws if the name is null or empty ""
+     * @throws IllegalArgumentException throws if the name is null or empty, ""
      */
     private void setName(String name) throws IllegalArgumentException{
         if(!name.isEmpty()&&!name.isBlank()){

@@ -12,12 +12,16 @@ import no.ntnu.iir.jakobfin.function.Army;
 import no.ntnu.iir.jakobfin.gui.controllers.ArmiesController;
 import no.ntnu.iir.jakobfin.gui.controllers.SceneChanger;
 import no.ntnu.iir.jakobfin.gui.controllers.SimulationController;
-
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+
+/**
+ * A class that represent the simulation of the game. It gives you the choice to pick armies from the two tables.
+ *
+ * @author 10007
+ * @version 22.05.2022
+ */
 public class SimulateMenu {
     private Scene scene;
     private ArmiesController armiesController;
@@ -30,6 +34,12 @@ public class SimulateMenu {
     private Button hillTerrain;
     private Biomes selectedTerrain;
 
+    /**
+     * Set up the display for all the information of this view. Connect the armies and button to the controllers.
+     *
+     * @param stage the stage of the application
+     * @param armiesController the controller to the armies in the game
+     */
     public SimulateMenu(Stage stage, ArmiesController armiesController){
         this.armiesController = armiesController;
         simController = new SimulationController();
@@ -57,12 +67,14 @@ public class SimulateMenu {
 
         plainTerrain.getStyleClass().add("gay");
 
+        //Adding function to terrain buttons
         plainTerrain.setOnAction(actionEvent -> selectTerrainButton(plainTerrain));
         hillTerrain.setOnAction(actionEvent -> selectTerrainButton(hillTerrain));
         forrestTerrain.setOnAction(actionEvent -> selectTerrainButton(forrestTerrain));
 
 
 
+        //Adding function to the main buttons
         mainWindow.setOnAction(actionEvent -> sceneChanger.goToMainMenu(stage, armiesController));
         simulationButton.setOnAction(actionEvent ->{
             if(selectedArmies.size()==2){
@@ -98,10 +110,21 @@ public class SimulateMenu {
         scene.getStylesheets().add(getClass().getResource("MainWindow.css").toExternalForm());
     }
 
+    /**
+     * Get the scene of this simulation view.
+     *
+     * @return the scene of this window
+     */
     public Scene getScene(){
         return this.scene;
     }
 
+    /**
+     * Set up the army table for the armies in the given list. Also add action events to the table.
+     *
+     * @param armyList a list of armies that shall be added to the display
+     * @return a table view populated by armies and action events
+     */
     private TableView<Army> setUpArmyTable(List<Army> armyList){
 
 
@@ -126,11 +149,21 @@ public class SimulateMenu {
         return armyTable;
     }
 
+    /**
+     * Add army to selected table.
+     *
+     * @param army the army that shall be added to the selected table
+     */
     private void addArmyToSelected(Army army){
         selectedArmies.add(army);
         selectedArmiesTable.setItems(armiesController.getArmyObservableList(selectedArmies));
     }
 
+    /**
+     * Set up a table view for the selected armies to battle.
+     *
+     * @param armyList a list of the armies that shall be added to the selected table
+     */
     private void setUpSelectedArmiesTable(List<Army> armyList){
         selectedArmiesTable = setUpArmyTable(armyList);
 
@@ -142,11 +175,22 @@ public class SimulateMenu {
         });
     }
 
+    /**
+     * Remove army from the selected table.
+     *
+     * @param army army that shall be removed from the selected table
+     */
     private void removeArmyToSelected(Army army){
         selectedArmies.remove(army);
         selectedArmiesTable.setItems(armiesController.getArmyObservableList(selectedArmies));
     }
 
+    /**
+     * Show alert. This method shows an error alert that have a custom text that can be added to
+     * the description of the problem.
+     *
+     * @param displayText the text that shall be displayed to the user
+     */
     private void showAlert(String displayText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
@@ -155,6 +199,11 @@ public class SimulateMenu {
         alert.showAndWait();
     }
 
+    /**
+     * Select the terrain, and gives the selected terrain button a specific style class.
+     *
+     * @param button the button that was pressed
+     */
     private void selectTerrainButton(Button button){
         plainTerrain.setId("");
         forrestTerrain.setId("");

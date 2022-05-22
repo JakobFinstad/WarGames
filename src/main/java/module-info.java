@@ -4,6 +4,7 @@ module no.ntnu.iir.jakobfin.gui.views{
 
     opens no.ntnu.iir.jakobfin.gui.views to javafx.fxml;
     exports no.ntnu.iir.jakobfin.gui.views;
+    exports no.ntnu.iir.jakobfin.gui.controllers;
     exports no.ntnu.iir.jakobfin.data;
     exports no.ntnu.iir.jakobfin.function;
 }

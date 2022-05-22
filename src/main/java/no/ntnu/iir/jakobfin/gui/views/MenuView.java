@@ -9,11 +9,24 @@ import javafx.stage.Stage;
 import no.ntnu.iir.jakobfin.gui.controllers.ArmiesController;
 import no.ntnu.iir.jakobfin.gui.controllers.SceneChanger;
 
+/**
+ * A class that represent the main menu of the game. It is designed for easy navigating between the options of this
+ * application.
+ *
+ * @author 10007
+ * @version 22.05.2022
+ */
 public class MenuView {
 
     private Scene scene;
     private ArmiesController armiesController;
 
+    /**
+     * Generate the menu page, with all it's displays.
+     *
+     * @param stage the stage of the application
+     * @param armiesController the controller for controlling armies in the game
+     */
     public MenuView(Stage stage, ArmiesController armiesController){
 
         this.armiesController = armiesController;
@@ -48,6 +61,11 @@ public class MenuView {
         stage.show();
     }
 
+    /**
+     * Get the scene of this window.
+     *
+     * @return the scene of this view
+     */
     public Scene getScene(){
         return this.scene;
     }

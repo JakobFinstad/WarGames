@@ -59,7 +59,7 @@ public class ArmyFileManager {
      * Write an army to the file. Overwrite the old file if the file already contains text.
      *
      * @param army the army that shall be saved to the file
-     * @throws IOException get thrown if the writer failes to write to the file
+     * @throws IOException get thrown if the writer fails to write to the file
      */
     public void writeToFile(Army army) throws IOException {
         FileWriter writer = new FileWriter(armyFile);

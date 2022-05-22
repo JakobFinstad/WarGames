@@ -47,3 +47,15 @@ ArmyFileManagerTest{
         hver gang testene blir kjørt, tester den om den klarer og lage fila, skrive til fila, og at det som leses fra fila er riktig.
         Dette ville også gjort testingen helt automatisk og fullstending.
 }
+
+SimulationControll{
+        Simulate: Her tar jeg inn en liste med armeer, dette har jeg gjort for at det skal være enklere for meg, hvis jeg skal
+        utvide løsningen min til å behandle en kamp mellom flere armeer. Jeg velger også å ta inn kunn de to første armeene
+        i lista, dette er for at battle klassen kun kan håndtere to armeer. Dette vil være ett problem og krever litt
+        omskriving om jeg skal utvide den.
+        Jeg velger heller og passe på i gui'en at brukeren ikke kan velge mer enn 2 armeer. Dette løser problemet
+        akkurat nå, men er ikke så veldig god løsning.
+
+        CreatTable: Her velger jeg kunn og displaye den vinnende armeen, dette er fordi, for at en arme skal vinne
+        må den andre armeen gått tom for units. Dette gjør at den tapende armeen ikke har noen units å vise frem.
+}

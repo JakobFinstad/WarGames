@@ -11,30 +11,37 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import no.ntnu.iir.jakobfin.data.Unit;
 import no.ntnu.iir.jakobfin.function.Army;
-import no.ntnu.iir.jakobfin.function.UnitFactory;
 import no.ntnu.iir.jakobfin.gui.controllers.ArmiesController;
 import no.ntnu.iir.jakobfin.gui.controllers.SceneChanger;
+import no.ntnu.iir.jakobfin.gui.controllers.UnitTableView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A view that present the armies and it's units. This will eventually represent the adding and removing of units in
+ * the armies. I want to add more functionality to this window although right now it just displays the armies.
+ *
+ * @author 10007
+ * @version 22.05.2022
+ */
 public class ManageArmies {
     private Scene scene;
-    private ObservableList<Army> armyObservableList;
-    private Army testArmy = new Army("Test");
     private List<Unit> unitList;
-    private ObservableList<Unit> unitObservableList;
     private ArmiesController armyController;
-
     private TableView<Unit> unitTableView;
 
+    /**
+     * Constructor for the manage armies view. Create all the provided field and retrieve the armies from the controller.
+     *
+     * @param stage the stage for this window
+     * @param armiesController the controller for the armies in this game
+     */
     public ManageArmies(Stage stage, ArmiesController armiesController){
         //Creating the list
         this.armyController = armiesController;
         unitList = new ArrayList<>();
 
-        //Filling the tables
-        fillTable();
 
         SceneChanger sceneChanger = new SceneChanger(stage);
 
@@ -60,10 +67,20 @@ public class ManageArmies {
 
     }
 
+    /**
+     * Get the scene of this window.
+     *
+     * @return the scene of this view
+     */
     public Scene getScene(){
         return this.scene;
     }
 
+    /**
+     * Set up the army table for the armies in the game.
+     *
+     * @return tableview for displaying the armies in the game
+     */
     public TableView<Army> setUpTableArmy(){
 
 
@@ -86,47 +103,28 @@ public class ManageArmies {
 
         return leftTableArmies;
     }
-    
+
+    /**
+     * Set up the table view for the units.
+     *
+     * @return table view populated with the armies in the army controller
+     */
     public TableView<Unit> setUpUnitTable(){
-        TableColumn<Unit, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        TableColumn<Unit, Integer> healthColumn = new TableColumn<>("Health");
-        healthColumn.setCellValueFactory(new PropertyValueFactory<>("health"));
-
-        TableColumn<Unit, Integer> attackColumn = new TableColumn<>("Attack");
-        attackColumn.setCellValueFactory(new PropertyValueFactory<>("attack"));
-
-        TableColumn<Unit, Integer> armorColumn = new TableColumn<>("Armor");
-        armorColumn.setCellValueFactory(new PropertyValueFactory<>("armor"));
-
-        unitTableView = new TableView<>();
-
+        unitTableView = UnitTableView.getUnitTableView();
         unitTableView.setItems(armyController.getUnitObservablesList(unitList));
-        unitTableView.getColumns().addAll(nameColumn, healthColumn, attackColumn, armorColumn);
-
         return unitTableView;
     }
 
+    /**
+     * Refresh the unit table with the units in the given army.
+     *
+     * @param army the army with the units that shall populate the table
+     */
     public void refreshUnitList(Army army){
         unitList = army.getAllUnits();
         unitTableView.setItems(armyController.getUnitObservablesList(unitList));
     }
 
-    public void fillTable(){
-        UnitFactory factory = new UnitFactory();
-        Army army1 = new Army("Human Army");
-        army1.addAll(factory.createMultipleUnits("RangedUnit","Yolo",10,1));
-        army1.addAll(factory.createMultipleUnits("CavalryUnit","My man Rammus",10,1));
-        army1.addAll(factory.createMultipleUnits("InfantryUnit","Ok",10,1));
 
-        Army army2 = new Army("Ogre Army");
-        army2.addAll(factory.createMultipleUnits("RangedUnit","Hoo",10,10));
-        army2.addAll(factory.createMultipleUnits("CavalryUnit","Little jo",10,10));
-        army2.addAll(factory.createMultipleUnits("InfantryUnit","Some dudes",10,100));
-
-        armyController.addArmy(army1);
-        armyController.addArmy(army2);
-    }
 
 }
