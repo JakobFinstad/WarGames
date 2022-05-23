@@ -58,6 +58,7 @@ public class MenuView {
 
         scene = new Scene(rootNode,800,800);
         stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("MainWindow.css").toExternalForm());
         stage.show();
     }
 
